@@ -14,7 +14,7 @@ public class GetBookingRequestSimulation extends Simulation {
                     .get("/booking"))
             .pause(5);
     {
-        setUp( // 11
+        setUp(
                 scn.injectOpen(atOnceUsers(5))
         ).protocols(httpProtocol);
     }
