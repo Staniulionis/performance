@@ -23,13 +23,13 @@ public class GetByIdPatchSimulation extends Simulation {
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/json")
                     .basicAuth("admin", "password123")
-                    .check(status().is(200))
                     .check(jsonPath("$.totalprice").exists(),
                                         jsonPath("$.totalprice").saveAs("newtotal"),
                                         jsonPath("$.depositpaid").exists(),
                                         jsonPath("$.depositpaid").saveAs("newdeposit"),
                                         jsonPath("$.additionalneeds").exists(),
                                         jsonPath("$.additionalneeds").saveAs("newadditional"))
+                    .check(status().is(200))
                     )
             )
             .pause(5)
