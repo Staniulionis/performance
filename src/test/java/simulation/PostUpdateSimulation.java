@@ -4,18 +4,18 @@ import io.gatling.javaapi.core.FeederBuilder;
 import io.gatling.javaapi.core.ScenarioBuilder;
 import io.gatling.javaapi.core.Simulation;
 import io.gatling.javaapi.http.HttpProtocolBuilder;
-
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.http;
 import static io.gatling.javaapi.http.HttpDsl.status;
 
-public class CreatePostUpdatePostSimulation extends Simulation {
+public class PostUpdateSimulation extends Simulation {
     HttpProtocolBuilder httpProtocol = http
             .baseUrl("http://localhost:3001/");
+    
     FeederBuilder.Batchable<String> feeder =
             csv("data/search.csv").random();
 
-    ScenarioBuilder scn = scenario("Create POST")
+    ScenarioBuilder scn = scenario("PostUpdateSimulation")
             .feed(feeder)
             .exec(http("CreateBooking")
                     .post("booking/")
@@ -34,12 +34,6 @@ public class CreatePostUpdatePostSimulation extends Simulation {
                     .check(
                             jsonPath("$.bookingid").exists(),
                             jsonPath("$.bookingid").saveAs("newid"))
-                    .transformResponse((response, session) -> {
-                                if (response.status().code() == 200) {
-                                    System.out.println(response.body().toString());
-                                    System.out.println(response.request());
-                                } return response;
-                            }
                     )
             )
             .pause(5)
@@ -57,12 +51,6 @@ public class CreatePostUpdatePostSimulation extends Simulation {
                                         "\"checkin\": \"2018-01-01\"," +
                                         "\"checkout\": \"2019-01-01\"}," +
                                         "\"additionalneeds\": \"Breakfast\"}"))
-                    .transformResponse((response, session) -> {
-                                if (response.status().code() == 200) {
-                                    System.out.println(response.body().toString());
-                                    System.out.println(response.request());
-                                } return response;
-                            }
                     )
             )
             .pause(5);
