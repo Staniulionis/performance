@@ -19,7 +19,6 @@ public class GetBookingByIdSimulation extends Simulation {
                     .transformResponse((response, session) -> {
                                 if (response.status().code() == 200) {
                                     System.out.println(response.body().string());
-                                    System.out.println("??????????++++++++++++++++++++===================????????????");
                                     System.out.println(response.request());
                                 } return response;
                             }
