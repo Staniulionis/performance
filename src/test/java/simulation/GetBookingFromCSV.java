@@ -12,6 +12,7 @@ import static io.gatling.javaapi.http.HttpDsl.status;
 public class GetBookingFromCSV extends Simulation {
     HttpProtocolBuilder httpProtocol = http
             .baseUrl("http://localhost:3001/");
+    
     FeederBuilder.Batchable<String> feeder =
             csv("data/search.csv").random();
 
@@ -24,14 +25,8 @@ public class GetBookingFromCSV extends Simulation {
                     .basicAuth("admin", "password123")
                     .body(StringBody("{\"firstname\": \"#{firstname}\"," +
                                          "\"lastname\": \"#{lastname}\"}"))
-                    .check(status().is(200))
                     .check(jsonPath("$.firstname").is("Jonas"))
-                    .transformResponse((response, session) -> {
-                                if (response.status().code() == 404) {
-                                    System.out.println(response.body().toString());
-                                    System.out.println(response.request());
-                                } return response;
-                            }
+                    .check(status().is(200))
                     )
             )
             .pause(5);
