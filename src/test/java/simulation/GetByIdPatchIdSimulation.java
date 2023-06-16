@@ -31,7 +31,6 @@ public class GetByIdPatchIdSimulation extends Simulation {
                                         jsonPath("$.additionalneeds").saveAs("newadditional"))
                     .transformResponse((response, session) -> {
                                 if (response.status().code() == 200) {
-                                    System.out.println("????????????????????????????????????????????????????GET");
                                     System.out.println(response.body().toString());
                                     System.out.println(response.request());
                                 } return response;
@@ -50,7 +49,6 @@ public class GetByIdPatchIdSimulation extends Simulation {
                                         "\"additionalneeds\": \"#{newadditional}\"}"))
                     .transformResponse((response, session) -> {
                                 if (response.status().code() == 200) {
-                                    System.out.println("????????????????????????????????????????????????????PATCH");
                                     System.out.println(response.body().toString());
                                     System.out.println(response.request());
                                 } return response;
