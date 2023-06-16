@@ -33,7 +33,7 @@ public class GetByIdPatchSimulation extends Simulation {
                     )
             )
             .pause(5)
-            .exec(http("Het specific booking")
+            .exec(http("Get specific booking")
                     .patch("booking/10")
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/json")
