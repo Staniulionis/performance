@@ -27,7 +27,6 @@ public class CreateBookingSimulation extends Simulation {
                     .transformResponse((response, session) -> {
                                 if (response.status().code() == 200) {
                                     System.out.println(response.body().toString());
-                                    System.out.println("??????????++++++++++++++++++++===================????????????");
                                     System.out.println(response.request());
                                 } return response;
                             }
