@@ -14,13 +14,13 @@ public class GetBookingByIdSimulation extends Simulation {
             .acceptHeader("application/json");
 
     ScenarioBuilder scn = scenario("GetBookingByIdSimulation")
-            .exec(http("Get booking by ID")
-                    .get("booking/10")
+                .exec(http("Get booking ID")
+                    .get("booking/")
                     )
             )
             .pause(5)
-            .exec(http("GetBookingById")
-                    .get("booking/")
+            .exec(http("Get booking by ID")
+                    .get("booking/10")
                     )
             )
             .pause(5);
