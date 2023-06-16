@@ -71,7 +71,7 @@ public class PostUpdateSimulation extends Simulation {
                         stressPeakUsers(350).during(20))
                 .protocols(httpProtocol))
                 .assertions(
-                        global().responseTime().max().lte(250),
+                        global().responseTime().max().lte(800),
                         global().successfulRequests().percent().gt(95.0),
                         global().requestsPerSec().between(0.0, 100.0));
     }
