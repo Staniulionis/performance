@@ -14,7 +14,7 @@ public class GetBookingByIdSimulation extends Simulation {
             .acceptHeader("application/json");
 
     ScenarioBuilder scn = scenario("GetBookingByIdSimulation")
-            .exec(http("GetBookingById")
+            .exec(http("Get booking by ID")
                     .get("booking/10")
                     )
             )
