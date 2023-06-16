@@ -17,7 +17,7 @@ public class PostUpdateSimulation extends Simulation {
 
     ScenarioBuilder scn = scenario("PostUpdateSimulation")
             .feed(feeder)
-            .exec(http("CreateBooking")
+            .exec(http("Post booking")
                     .post("booking/")
                     .basicAuth("admin", "password123")
                     .header("Accept", "application/json")
