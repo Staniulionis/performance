@@ -16,24 +16,11 @@ public class GetBookingByIdSimulation extends Simulation {
     ScenarioBuilder scn = scenario("GetBookingByIdSimulation")
             .exec(http("GetBookingById")
                     .get("booking/10")
-                    .transformResponse((response, session) -> {
-                                if (response.status().code() == 200) {
-                                    System.out.println(response.body().string());
-                                    System.out.println(response.request());
-                                } return response;
-                            }
                     )
             )
             .pause(5)
             .exec(http("GetBookingById")
                     .get("booking/")
-                    .transformResponse((response, session) -> {
-                                if (response.status().code() == 200) {
-                                    System.out.println(response.body().string());
-                                    System.out.println("??????????????????????");
-                                    System.out.println(response.request());
-                                } return response;
-                            }
                     )
             )
             .pause(5);
