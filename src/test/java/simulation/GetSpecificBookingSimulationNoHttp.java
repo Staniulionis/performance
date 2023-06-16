@@ -7,7 +7,7 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class GetSpecificBookingSimulationNoHttp extends Simulation {
 
     ScenarioBuilder scn = scenario("GetBookingIds")
-            .exec(http("GetSpecificRequest")
+            .exec(http("Get specific ID")
                     .get("http://localhost:3001/booking")
             )
             .pause(5);
