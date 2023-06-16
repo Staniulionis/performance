@@ -11,7 +11,7 @@ public class PostBookingSimulation extends Simulation {
             .baseUrl("http://localhost:3001/");
 
     ScenarioBuilder scn = scenario("CreateBooking")
-            .exec(http("CreateBooking")
+            .exec(http("Post Booking")
                     .post("booking/")
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/json")
