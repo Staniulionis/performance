@@ -18,7 +18,7 @@ public class GetByIdPatchSimulation extends Simulation {
 
     ScenarioBuilder scn = scenario("GetUserDetailsAndUpdate")
             .feed(feeder)
-            .exec(http("Het specific booking")
+            .exec(http("Get specific booking and Update")
                     .get("booking/10")
                     .header("Accept", "application/json")
                     .header("Content-Type", "application/json")
