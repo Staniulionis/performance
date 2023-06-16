@@ -3,11 +3,10 @@ package simulation;
 import io.gatling.javaapi.core.ScenarioBuilder;
 import io.gatling.javaapi.core.Simulation;
 import io.gatling.javaapi.http.HttpProtocolBuilder;
-
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.http;
 
-public class CreateBookingSimulation extends Simulation {
+public class PostBookingSimulation extends Simulation {
     HttpProtocolBuilder httpProtocol = http
             .baseUrl("http://localhost:3001/");
 
@@ -24,12 +23,6 @@ public class CreateBookingSimulation extends Simulation {
                                     "\"checkin\": \"2018-01-01\"," +
                                     "\"checkout\": \"2019-01-01\"}," +
                             "\"additionalneeds\": \"Breakfast\"}"))
-                    .transformResponse((response, session) -> {
-                                if (response.status().code() == 200) {
-                                    System.out.println(response.body().toString());
-                                    System.out.println(response.request());
-                                } return response;
-                            }
                     )
             )
             .pause(5);
