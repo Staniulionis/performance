@@ -11,7 +11,7 @@ public class GetBookingSimulation extends Simulation {
             .baseUrl("http://localhost:3001");
     
     ScenarioBuilder scn = scenario("GetBookingIds")
-            .exec(http("Get booking IDt")
+            .exec(http("Get booking ID")
                     .get("/booking"))
             .pause(5);
     {
