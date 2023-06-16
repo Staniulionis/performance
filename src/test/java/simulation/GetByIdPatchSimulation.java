@@ -9,13 +9,14 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.http;
 import static io.gatling.javaapi.http.HttpDsl.status;
 
-public class GetByIdPatchIdSimulation extends Simulation {
+public class GetByIdPatchSimulation extends Simulation {
     HttpProtocolBuilder httpProtocol = http
             .baseUrl("http://localhost:3001/");
+    
     FeederBuilder.Batchable<String> feeder =
             csv("data/search.csv").random();
 
-    ScenarioBuilder scn = scenario("GetUserDetailsFromCSV")
+    ScenarioBuilder scn = scenario("GetUserDetailsAndUpdate")
             .feed(feeder)
             .exec(http("Het specific booking")
                     .get("booking/10")
@@ -29,12 +30,6 @@ public class GetByIdPatchIdSimulation extends Simulation {
                                         jsonPath("$.depositpaid").saveAs("newdeposit"),
                                         jsonPath("$.additionalneeds").exists(),
                                         jsonPath("$.additionalneeds").saveAs("newadditional"))
-                    .transformResponse((response, session) -> {
-                                if (response.status().code() == 200) {
-                                    System.out.println(response.body().toString());
-                                    System.out.println(response.request());
-                                } return response;
-                            }
                     )
             )
             .pause(5)
@@ -47,12 +42,6 @@ public class GetByIdPatchIdSimulation extends Simulation {
                     .body(StringBody("{\"totalprice\": \"#{newtotal}\"," +
                                         "\"depositpaid\": \"#{newdeposit}\"," +
                                         "\"additionalneeds\": \"#{newadditional}\"}"))
-                    .transformResponse((response, session) -> {
-                                if (response.status().code() == 200) {
-                                    System.out.println(response.body().toString());
-                                    System.out.println(response.request());
-                                } return response;
-                            }
                     )
             )
             .pause(5);
