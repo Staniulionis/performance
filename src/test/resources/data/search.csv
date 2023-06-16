@@ -1,0 +1,10 @@
+﻿firstname,lastname,totalprice,depositpaid,checkin,checkout,additionalneeds
+Andrius,Baravykas,125,true,2010-10-10,2010-10-20,Breakfast,,,
+Jonas,Braunas,25,false,2011-05-08,2012-02-15,Dinner,,,
+Jonas,Baravykas,30,true,2010-10-10,2016-10-20,Balcony,,,
+Jonas,Braunas,20,true,2011-05-08,2012-02-04,Breakfast,,,
+Jonas,Baravykas,10,true,2010-10-10,2010-10-29,Dinner,,,
+Jonas,Braunas,52,false,2011-05-08,2012-02-20,Balcony,,,
+Andrius,Baravykas,25,true,2010-10-10,2010-10-20,Breakfast,,,
+Jonas,Braunas,125,true,2011-05-08,2012-02-15,Dinner,,,
+Jonas,Baravykas,25,true,2013-10-10,2019-10-20,Balcony,,,
