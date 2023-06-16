@@ -28,7 +28,6 @@ public class GetBookingFromCSV extends Simulation {
                     .check(jsonPath("$.firstname").is("Jonas"))
                     .transformResponse((response, session) -> {
                                 if (response.status().code() == 404) {
-                                    System.out.println("Not Found!!!!!!!!!!!!!!!");
                                     System.out.println(response.body().toString());
                                     System.out.println(response.request());
                                 } return response;
