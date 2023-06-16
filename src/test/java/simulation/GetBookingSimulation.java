@@ -6,9 +6,10 @@ import io.gatling.javaapi.http.*;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
-public class GetBookingRequestSimulation extends Simulation {
+public class GetBookingSimulation extends Simulation {
     HttpProtocolBuilder httpProtocol = http
             .baseUrl("http://localhost:3001");
+    
     ScenarioBuilder scn = scenario("GetBookingIds")
             .exec(http("GetBookingIdsRequest")
                     .get("/booking"))
